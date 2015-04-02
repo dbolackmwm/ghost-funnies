@@ -3,6 +3,7 @@ var curState = -1;
 (function(window,undefined){
 History.Adapter.bind(window, 'statechange', function(){
     var state = History.getState();
+   
     if(typeof state.data.state === 'undefined' || curState != state.data.state){
         for(var i = 0; i < postIndex.length; i++){
             if(state.url.endsWith(postIndex[i].url)){
@@ -45,8 +46,9 @@ function loadState(url){
         NProgress.done();
     });
 }
+
 $('.comic-nav a').click(function(e){
-    e.preventDefault();
+    //e.preventDefault();
     var $this = $(this);
     var navTo = $this.parent('li').attr('class');
     var oldState = curState;
